@@ -1,12 +1,17 @@
 import express from "express";
-import categoriasRoutes from "./routes/categorias.routes.js"
-
+import cors from "cors";
+import categoriasRoutes from "./routes/categorias.routes.js";
 
 const app = express();
 
-/*setear un poerto */
-app.set("port",5000)
+app.set("port", 5000);
 
-app.use("/api/categorias",categoriasRoutes)
+// middlewares
+app.use(cors());
+app.use(express.json());
+
+// rutas
+app.use("/api/categorias", categoriasRoutes);
+
 
 export default app;
